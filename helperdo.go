@@ -14,7 +14,7 @@ import (
 	"strings"
 )
 
-var server *string = flag.String("server", "irc.nebula.fi:6667", "Server to connect to in format 'irc.nebula.fi:6667'")
+var server *string = flag.String("server", "ircnet.eversible.com:6667", "Server to connect to in format 'irc.eversible.com:6667'")
 var nick *string = flag.String("nick", "koirabotti", "IRC nick to use")
 var channel *string = flag.String("channel", "#tkt-fuksit2012", "Channel to join")
 
@@ -22,7 +22,7 @@ func main() {
 	flag.Parse()
 
 	if con, err := goty.Dial(*server, *nick); err != nil {
-		fmt.Fprintf(os.Stderr, "sic: %s\n", err)
+		fmt.Fprintf(os.Stderr, "dogohelper: %s\n", err)
 	} else {
 		in := bufio.NewReader(os.Stdin)
 
@@ -65,12 +65,12 @@ func main() {
 
 		for {
 			if _, err := in.ReadString('\n'); err != nil {
-				fmt.Fprintf(os.Stderr, "sic: %s\n", err)
+				fmt.Fprintf(os.Stderr, "dogohelper: %s\n", err)
 				break
 			}
 		}
 		if err := con.Close(); err != nil {
-			fmt.Fprintf(os.Stderr, "sic: %s\n", err)
+			fmt.Fprintf(os.Stderr, "dogohelper: %s\n", err)
 		}
 	}
 }

@@ -6,10 +6,10 @@ import (
 	"os/exec"
 )
 
-func openlink(link string) {
-	cmd := exec.Command(link)
+func openURL(link string) {
+	cmd := exec.Command("cmd", "/c", "start", link)
 	err := cmd.Run()
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "Couldn't open link")
+		fmt.Fprintln(os.Stderr, err)
 	}
 }
