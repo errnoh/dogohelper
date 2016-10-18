@@ -1,4 +1,4 @@
-// +build windows
+// +build darwin freebsd netbsd openbsd
 package main
 
 import (
@@ -8,7 +8,7 @@ import (
 )
 
 func openURL(link string) {
-	cmd := exec.Command("cmd", "/c", "start", link)
+	cmd := exec.Command("open", link)
 	err := cmd.Run()
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
